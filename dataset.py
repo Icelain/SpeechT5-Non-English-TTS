@@ -63,18 +63,35 @@ class SpeechDataset(Dataset):
         self.data['audio_features'] = audio_features_list
         self.data['s_embed'] = speaker_embed_list
 
-
     def normalize(self, text):
-        persian_homophon_chars = {
-            'ا':['إ','أ','ئ','ؤ'],
-            'ق':['غ'], 'ز':['ظ','ض','ذ'],
-            'س':['ص','ث'], 'ت':['ط','ة'],
-            'ک':['ك'], '':['ّ', 'ً'], ',':'،'}
+    # Kannada homophonic normalization
+    kannada_homophones = {
+        'ಅ': ['ಆ'],
+        'ಇ': ['ಈ'],
+        'ಉ': ['ಊ'],
+        'ಎ': ['ಏ'],
+        'ಒ': ['ಓ'],
+        'ಕ': ['ಖ'],
+        'ಗ': ['ಘ'],
+        'ಚ': ['ಛ'],
+        'ಜ': ['ಝ'],
+        'ಟ': ['ಠ'],
+        'ಡ': ['ಢ'],
+        'ತ': ['ಥ'],
+        'ದ': ['ಧ'],
+        'ಪ': ['ಫ'],
+        'ಶ': ['ಷ'],
+        'ನ': ['ಣ'],
+        'ರ': ['ಱ'],
+        ',': ['।'],  # Kannada danda to comma
+    }
 
-        for key in persian_homophon_chars:
-            for char in persian_homophon_chars[key]:
-                text = text.replace(char, key)
-        return text
+    for canonical, variants in kannada_homophones.items():
+        for var in variants:
+            text = text.replace(var, canonical)
+
+    return text
+
 
 
 
