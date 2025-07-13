@@ -25,8 +25,8 @@ def load_checkpoint(checkpoint):
     return model, optimizer, scheduler, epoch, minloss
 
 
-def get_persian_tokens():
-    tokens = [char for char in " ابپتسجچخعدزرژش‌فقکآگلمنوهی"]
+def get_kannada_tokens():
+    tokens = [char for char in "ಅಆಇಈಉಊಋಎಏಐಒಓಔಕಖಗಘಙಚಛಜಝಞಟಠಡಢಣತಥದಧನಪಫಬಭಮಯರಲವಶಷಸಹಳೞ"]
     return tokens
 
 
