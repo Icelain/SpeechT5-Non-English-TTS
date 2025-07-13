@@ -12,7 +12,7 @@ from torch.optim.lr_scheduler import ReduceLROnPlateau
 from config import *
 from model import get_model
 from dataset import get_data_loaders
-from utils import get_persian_tokens, load_checkpoint, save_checkpoint
+from utils import get_persian_tokens, load_checkpoint, save_checkpoint, save_model
 
 
 class Trainer():
@@ -50,7 +50,7 @@ class Trainer():
         if checkpoint == None:
             # Load text to speech model
             print('Loading SpeechT5 model ...', end = '')
-            self.t5tts = get_model(config.model_checkpoint, len(self.tokenizer), self.device)
+            self.model = get_model(config.model_checkpoint, len(self.tokenizer), self.device)
             print('\rSpeechT5 loaded successfully.'); print('-' * 50)
 
             # Initialize the Optimizer and Scheduler
@@ -155,7 +155,7 @@ class Trainer():
             # Save the best model based on minimum loss
             if test_loss < self.minloss:
                 self.minloss = test_loss
-                self.utils.save_model(self.model, self.config.best_model_path, epoch)
+                save_model(self.model, self.config.best_model_path)
 
             pre_lr = self.optimizer.param_groups[0]['lr']
             self.scheduler.step(train_loss)
