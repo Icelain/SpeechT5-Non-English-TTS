@@ -168,7 +168,7 @@ class Trainer():
             print(f'\r[{epoch+1}]--> (Train) Loss: {train_loss:.4f} | (VAl) Loss: {test_loss:.4f}')
             if pre_lr != self.optimizer.param_groups[0]['lr'] : print(f'Learning rate reduced at epoch {epoch + 1}!')
 
-            save_checkpoint(self.model, self.optimizer, self.scheduler, epoch+1, self.minloss, self.config.finetune_checkpoint )
+            save_checkpoint(self.model, self.optimizer, self.scheduler, epoch+1, self.minloss, self.config.finetune_cp_path )
 
         # Load the best model (the state that model achieved minimum validation loss)
         return self.t5tts.get_model(self.device, weights_path= self.config.best_model_path)
