@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import torch
 
 
-def save_model(self, model, path):
+def save_model(model, path):
     torch.save(model.state_dict(), path)
 
 
