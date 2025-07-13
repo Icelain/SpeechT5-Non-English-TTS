@@ -80,9 +80,9 @@ def get_speaker_counts(data):
 
 if __name__ == '__main__':
 
-    dataset_path = '/content/Mozilla/'
-    train_info = pd.read_csv( dataset_path + '14407271615 14403167110/cv-corpus-13.0-2023-03-09/fa/train.tsv', delimiter='\t')
-    test_info = pd.read_csv( dataset_path + '14407271615 14403167110/cv-corpus-13.0-2023-03-09/fa/test.tsv', delimiter='\t')
+    dataset_path = './dataset'
+    train_info = pd.read_csv('train.tsv', delimiter='\t')
+    test_info = pd.read_csv('test.tsv', delimiter='\t')
 
     # Load train and test data samples
     train_data = load_data(dataset_path, train_info)
