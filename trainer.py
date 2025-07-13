@@ -12,7 +12,7 @@ from torch.optim.lr_scheduler import ReduceLROnPlateau
 from config import *
 from model import get_model
 from dataset import get_data_loaders
-from utils import get_persian_tokens, load_checkpoint, save_checkpoint, save_model
+from utils import get_kannada_tokens, load_checkpoint, save_checkpoint, save_model
 
 
 class Trainer():
