@@ -19,20 +19,24 @@ def get_files( path, extention):
         return files
 
 
-def load_data( dataset_path, data_info, extention='.mp3'):
+def load_data(dataset_path, data_info, extension='.wav'):
     if not os.path.isdir(dataset_path):
         print('Dataset path does not exist ')
         quit()
     else:
         # Retrieve all files in chosen path with the specific extension
-        all_data_paths = get_files(dataset_path, extention)
+        all_data_paths = get_files(dataset_path, extension)
         # Create a dictionary where keys are unique parts (file names) and values are paths
         path_dict = {os.path.basename(path): path for path in all_data_paths}
 
         paths, texts, speaker_ids = [], [], []
         for index, row in tqdm(data_info.iterrows()):
             # The data_table's path actually is name of file, not its real path
-            paths.append(path_dict[row.path])
+
+            if type(row.path) != str:
+                    continue
+                
+            paths.append(path_dict[row.path + ".wav"])
             texts.append(row.sentence)
             speaker_ids.append(row.client_id)
 
