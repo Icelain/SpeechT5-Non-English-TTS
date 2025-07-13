@@ -1,7 +1,7 @@
 SPEECHT5_CHP = "microsoft/speecht5_tts"
 VOCODER_CHP = "microsoft/speecht5_hifigan"
-BEST_MODEL_PATH = '/content/drive/best_model.pt'
-DRIVE_CHP_PATH = '/content/drive/checkpoint.pth'
+BEST_MODEL_PATH = '/content/drive/MyDrive/kannada_tts/best_model.pt'
+DRIVE_CHP_PATH = '/content/drive/MyDrive/kannada_tts/checkpoint.pth'
 
 class Configs():
 
