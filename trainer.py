@@ -30,8 +30,8 @@ class Trainer():
         self.tokenizer = SpeechT5Tokenizer.from_pretrained(config.model_checkpoint)
         print('\rTokenizer and FeatureExtractor loaded successfully.'); print('-' * 50)
 
-        # Update tokenizer with persian character
-        self.tokenizer.add_tokens(get_persian_tokens())
+        # Update tokenizer with kannada character
+        self.tokenizer.add_tokens(get_kannada_tokens())
 
         # Load vocoder (hifigan) to generate waveform from specogram
         print('Loading Vocoder ...', end = '')
